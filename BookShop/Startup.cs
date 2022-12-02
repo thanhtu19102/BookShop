@@ -24,10 +24,12 @@ namespace BookShop
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddMvc();
+			services.AddMvc().AddSessionStateTempDataProvider();
 			services.AddControllersWithViews();
 			services.Add(new ServiceDescriptor(typeof(StoreContext), new StoreContext(Configuration.GetConnectionString("DefaultConnection"))));
-			//services.AddSession(options =>)
+			services.AddSession();
+			
+			
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
