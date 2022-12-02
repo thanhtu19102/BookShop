@@ -55,8 +55,14 @@ namespace BookShop.Areas.Admin.Models
                     {
                         list.Add(new User()
                         {
+                            user_ID = reader["user_ID"].ToString(),
+                            fullname = reader["fullname"].ToString(),
                             username = reader["username"].ToString(),
                             password = reader["password"].ToString(),
+                            email = reader["email"].ToString(),
+                            address = reader["address"].ToString(),
+                            phone = reader["phone"].ToString(),
+                            role = reader["role"].ToString()
                         });
                     }
                     reader.Close();
@@ -66,6 +72,61 @@ namespace BookShop.Areas.Admin.Models
 
             }
             return list;
+        }
+        //public int UpdateUser(User us)
+        //{
+        //    using (MySqlConnection conn = GetConnection())
+        //    {
+        //        conn.Open();
+        //        var str = "update User set fullname = @fn, username = @un, password = @pw, address = @add, phone = @p, role = @r where user_ID=@uid";
+        //        MySqlCommand cmd = new MySqlCommand(str, conn);
+        //        cmd.Parameters.AddWithValue("fn", us.fullname);
+        //        cmd.Parameters.AddWithValue("un", us.username);
+        //        cmd.Parameters.AddWithValue("pw", us.password);
+        //        cmd.Parameters.AddWithValue("add", us.address);
+        //        cmd.Parameters.AddWithValue("p", us.phone);
+        //        cmd.Parameters.AddWithValue("r", us.role);
+        //        return (cmd.ExecuteNonQuery());
+        //    }
+        //}
+
+        public User ViewUser(string Id)
+        {
+            User us = new User();
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                var str = "select * from User where User_ID=@uid";
+                MySqlCommand cmd = new MySqlCommand(str, conn);
+                cmd.Parameters.AddWithValue("uid", Id);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    reader.Read();
+                    us.user_ID = reader["user_ID"].ToString();
+                    us.fullname = reader["fullname"].ToString();
+                    us.username = reader["username"].ToString();
+                    us.password = reader["password"].ToString();
+                    us.email = reader["email"].ToString();
+                    us.address = reader["address"].ToString();
+                    us.phone = reader["phone"].ToString();
+                    us.role = reader["role"].ToString();
+                }
+            }
+            return (us);
+        }
+        public int DeleteUser(string id)
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+
+                conn.Open();
+                var str = "delete from USER where user_ID=@uid";
+                MySqlCommand cmd = new MySqlCommand(str, conn);
+                cmd.Parameters.AddWithValue("uid", id);
+
+                return (cmd.ExecuteNonQuery());
+
+            }
         }
     }
 }

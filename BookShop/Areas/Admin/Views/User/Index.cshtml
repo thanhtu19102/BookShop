@@ -11,54 +11,57 @@
 
 <table border="1">
     <tr>
-        <th>Mã Khoa</th>
-        <th>Tên Khoa</th>
+        <th>#</th>
+        <th>Họ và tên</th>
+        <th>Tên tài khoản</th>
+        <th>Email</th>
+        <th>Địa chỉ</th>
+        <th>Số điện thoại</th>
+        <th>Phân quyền</th>
         <th>Chức năng</th>
-        <th>Mã Khoa</th>
-        <th>Tên Khoa</th>
-        <th>Chức năng</th>
-        <th>Mã Khoa</th>
-        <th>Tên Khoa</th>
-        <th>Chức năng</th>
-
-
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var user in Model)
     {
         <tr>
             <td>
-                @item.username
-            </td>
-
-            <td>
-                @item.password
+                @user.user_ID
             </td>
             <td>
-                @item.username
-            </td>
-
-            <td>
-                @item.password
+                @user.fullname
             </td>
             <td>
-                @item.username
-            </td>
-
-            <td>
-                @item.password
+                @user.username
             </td>
             <td>
-                @item.username
+                @user.email
             </td>
-
+            <td>
+                @user.address
+            </td>
             
             <td>
-                <a href="DeleteKhoa?Id=@item.username">Xóa</a>
-                <a href="ViewKhoa?Id=@item.password">View</a>
+                @user.phone
+            </td>
+            @{
+                if(user.role == "0"){
+                    user.role = "Quản trị viên";
+                } else{
+                    user.role = "Khách hàng";
+                }
+                        <td>
+                            @user.role
+                        </td>
+            
+            }
+            
+            <td>
+                <a href="User/ViewUser?Id=@user.user_ID">Sửa</a>
+                <a href="User/DeleteUser?Id=@user.user_ID">Xóa</a>
             </td>
 
         </tr>
     }
-</table>
+</table><br>
+    <a style="width:50%;"style class="nav-link text-dark btn btn-primary" asp-area="Admin" asp-controller="User" asp-action="EnterUser">Thêm mới người dùng</a>
 </div>
