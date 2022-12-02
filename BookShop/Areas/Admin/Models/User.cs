@@ -1,4 +1,11 @@
-﻿namespace BookShop.Areas.Admin.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+using MySql.Data.MySqlClient;
+using System.Configuration;
+namespace BookShop.Areas.Admin.Models
 {
     public class User
     {

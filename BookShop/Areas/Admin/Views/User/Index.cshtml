@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BookShop.Areas.Admin.Models.User>
+
+    @{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+<h1>Trang quản lý người dùng</h1>
+
+
+<table border="1">
+    <tr>
+        <th>Mã Khoa</th>
+        <th>Tên Khoa</th>
+        <th>Chức năng</th>
+        <th>Mã Khoa</th>
+        <th>Tên Khoa</th>
+        <th>Chức năng</th>
+        <th>Mã Khoa</th>
+        <th>Tên Khoa</th>
+        <th>Chức năng</th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.username
+            </td>
+
+            <td>
+                @item.password
+            </td>
+            <td>
+                @item.username
+            </td>
+
+            <td>
+                @item.password
+            </td>
+            <td>
+                @item.username
+            </td>
+
+            <td>
+                @item.password
+            </td>
+            <td>
+                @item.username
+            </td>
+
+            
+            <td>
+                <a href="DeleteKhoa?Id=@item.username">Xóa</a>
+                <a href="ViewKhoa?Id=@item.password">View</a>
+            </td>
+
+        </tr>
+    }
+</table>
+</div>
