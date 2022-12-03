@@ -92,7 +92,7 @@
    
           <li class="nav-item">
             <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fa fa-home"></i>
               <p>
                 TRANG CHỦ
               </p>
@@ -102,7 +102,7 @@
 
           <li class="nav-item">
             <a href="pages/calendar.html" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
+              <i class="nav-icon fas fa-book-open"></i>
               <p>
                 QUẢN LÝ SẢN PHẨM
                 
@@ -111,7 +111,8 @@
           </li>
           <li class="nav-item">
             <a href="pages/gallery.html" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
+              @*<i class="nav-icon fas fa-book-open-reader"></i>*@
+              <img style="width:27px;padding-left:0px ;padding-right:5px" src="https://cdn-icons-png.flaticon.com/128/1164/1164620.png" />
               <p>
                 QUẢN LÝ DANH MỤC 
               </p>
@@ -119,7 +120,7 @@
           </li>
           <li class="nav-item">
             <a href="pages/kanban.html" class="nav-link">
-              <i class="nav-icon fas fa-columns"></i>
+              <i class="nav-icon fas fa-file-invoice"></i>
               <p>
                 QUẢN LÝ HÓA ĐƠN
               </p>
@@ -127,7 +128,7 @@
           </li>
           <li class="nav-item">
             <a asp-area="Admin" asp-controller="User" asp-action="Index" class="nav-link">
-              <i class="nav-icon fas fa-columns"></i>
+              <i class="nav-icon fas fa-user"></i>
               <p>
                 QUẢN LÝ NGƯỜI DÙNG
               </p>
@@ -146,7 +147,9 @@
       
 </>
   <!-- Content Wrapper. Contains page content -->
-  @RenderBody();
+  <div class="content-wrapper">
+  @RenderBody()
+  </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>

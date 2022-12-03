@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookShop.Models;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 namespace BookShop.Areas.Admin.Controllers
 {
@@ -41,27 +42,45 @@ namespace BookShop.Areas.Admin.Controllers
             ViewData.Model = us;
             return View();
         }
-        //public IActionResult UpdateUser(User us)
-        //{
-        //    int count;
-        //    StoreContext context = new StoreContext("server=127.0.0.1;user id=root;password=;port=3306;database=bookshop;");
-        //    count = context.UpdateUser(us);
-        //    if (count > 0)
-        //        ViewData["thongbao"] = "Update thành công";
-        //    else
-        //        ViewData["thongbao"] = "Update không thành công";
-        //    return View();
+        public IActionResult UpdateUser(User us)
+        {
+            int count;
+            string message = string.Empty;
+            StoreContext context = new StoreContext("server=127.0.0.1;user id=root;password=;port=3306;database=bookshop;");
 
-        //}
+            count = context.UpdateUser(us);
+           
+            return RedirectToAction("Index", "User");
+
+        }
         public IActionResult DeleteUser(string ID)
         {
+
             StoreContext context = new StoreContext("server=127.0.0.1;user id=root;password=;port=3306;database=bookshop;");
-            int count = context.DeleteUser(ID);
-            if (count > 0)
-                ViewData["thongbao"] = "Xóa thành công";
-            else
-                ViewData["thongbao"] = "Xóa không thành công";
+            context.DeleteUser(ID);
             return RedirectToAction("Index", "User");
+        }
+
+        protected void SetAlert(string msg, int type)
+        {
+            TempData["AlertMessage"] = msg;
+            TempData["AlertMessage"] = msg;
+            if (type == 1)
+            {
+                TempData["AlertType"] = "alert-success";
+            }
+            else if (type == 2)
+            {
+                TempData["AlertType"] = "alert-warning";
+            }
+            else if (type == 3)
+            {
+                TempData["AlertType"] = "alert-danger";
+            }
+            else
+            {
+                TempData["AlertType"] = "alert-info";
+            }
         }
 
     }

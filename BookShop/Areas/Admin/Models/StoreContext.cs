@@ -73,22 +73,24 @@ namespace BookShop.Areas.Admin.Models
             }
             return list;
         }
-        //public int UpdateUser(User us)
-        //{
-        //    using (MySqlConnection conn = GetConnection())
-        //    {
-        //        conn.Open();
-        //        var str = "update User set fullname = @fn, username = @un, password = @pw, address = @add, phone = @p, role = @r where user_ID=@uid";
-        //        MySqlCommand cmd = new MySqlCommand(str, conn);
-        //        cmd.Parameters.AddWithValue("fn", us.fullname);
-        //        cmd.Parameters.AddWithValue("un", us.username);
-        //        cmd.Parameters.AddWithValue("pw", us.password);
-        //        cmd.Parameters.AddWithValue("add", us.address);
-        //        cmd.Parameters.AddWithValue("p", us.phone);
-        //        cmd.Parameters.AddWithValue("r", us.role);
-        //        return (cmd.ExecuteNonQuery());
-        //    }
-        //}
+        public int UpdateUser(User us)
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                var str = "update user set fullname = @fn, username = @un, password = @pw, email = @e, address = @add, phone = @p, role = @r where user_ID=@uid";
+                MySqlCommand cmd = new MySqlCommand(str, conn);
+                cmd.Parameters.AddWithValue("uid", us.user_ID);
+                cmd.Parameters.AddWithValue("fn", us.fullname);
+                cmd.Parameters.AddWithValue("un", us.username);
+                cmd.Parameters.AddWithValue("e", us.email);
+                cmd.Parameters.AddWithValue("pw", us.password);
+                cmd.Parameters.AddWithValue("add", us.address);
+                cmd.Parameters.AddWithValue("p", us.phone);
+                cmd.Parameters.AddWithValue("r", us.role);
+                return (cmd.ExecuteNonQuery());
+            }
+        }
 
         public User ViewUser(string Id)
         {
