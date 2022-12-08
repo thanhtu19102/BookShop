@@ -3,7 +3,7 @@
     public class Product
     {
         private string Pd_ID;
-        private string Cat_ID;
+        private string Cat_Name;
         private string Title;
         private int Price;
         private string Thumbnail;
@@ -18,10 +18,10 @@
             get { return Pd_ID; }
             set { Pd_ID = value; }
         }
-        public string cat_ID
+        public string cat_name
         {
-            get { return Cat_ID; }
-            set { Cat_ID = value; }
+            get { return Cat_Name; }
+            set { Cat_Name = value; }
         }
         public string title
         {

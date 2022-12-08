@@ -130,5 +130,35 @@ namespace BookShop.Areas.Admin.Models
 
             }
         }
+
+        public List<Category> GetCategorys()
+        {
+            List<Category> list = new List<Category>();
+
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                string str = "select * from category";
+                MySqlCommand cmd = new MySqlCommand(str, conn);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new Category()
+                        {
+                            cat_ID = reader["cat_ID"].ToString(),
+                            name = reader["name"].ToString()
+                            
+                        });
+                    }
+                    reader.Close();
+                }
+
+                conn.Close();
+
+            }
+            return list;
+        }
     }
 }

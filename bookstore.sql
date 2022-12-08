@@ -8,8 +8,8 @@ create table category
 create table product
 (
     	pd_ID int NOT NULL AUTO_INCREMENT,
-    	cat_ID int NOT NULL,
-    	title varchar2(255),
+    	cat_name varchar NOT NULL,
+    	title varchar(255),
     	price int,
     	thumbnail varchar(255),
 	discount int,
@@ -18,8 +18,11 @@ create table product
 	updated_at datetime,
 	quantity int,
     	PRIMARY KEY pk_pd (pd_ID),
-	FOREIGN KEY fk_pd_cat (cat_ID) REFERENCES category(cat_ID)
+	FOREIGN KEY fk_pd_cat (cat_name) REFERENCES category(name)
 )
+INSERT INTO `product` (`cat_ID`, `title`, `price`, `thumbnail`, `discount`, `des`, `created_at`, `updated_at`, `quantity`) VALUES
+('', 'admin', 'admin','thanhtu101102@gmail.com', '0358461911', 'Quận 12', 0),
+('Lê Vinh', 'khach', 'khach','levinh@gamil.com', '0345678912', 'Thủ Đức', 1);
 
 create table `user`
 (
