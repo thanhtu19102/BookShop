@@ -4,6 +4,9 @@ create table category
 	name varchar(255) NOT NULL,
 	PRIMARY KEY pk_cat (cat_ID)
 )
+INSERT INTO `category` (`name`) values
+('SÁCH THIẾU NHI'),
+('SÁCH ĐẦU TƯ')
 
 create table product
 (
@@ -20,9 +23,10 @@ create table product
     	PRIMARY KEY pk_pd (pd_ID),
 	FOREIGN KEY fk_pd_cat (cat_name) REFERENCES category(name)
 )
-INSERT INTO `product` (`cat_ID`, `title`, `price`, `thumbnail`, `discount`, `des`, `created_at`, `updated_at`, `quantity`) VALUES
-('', 'admin', 'admin','thanhtu101102@gmail.com', '0358461911', 'Quận 12', 0),
-('Lê Vinh', 'khach', 'khach','levinh@gamil.com', '0345678912', 'Thủ Đức', 1);
+INSERT INTO `product` (`cat_name`, `title`, `price`, `thumbnail`, `discount`, `des`, `created_at`, `updated_at`, `quantity`) VALUES
+('SÁCH CÔNG NGHỆ', 'C++ For Beginers', '200000','/AdminAssets/dist/img/c++.jpg', '180000','Sách dành cho người mới học lập trình', '2002-12-12','2002-12-13', 100)
+('SÁCH ĐẦU TƯ', 'Nhà Giả Kim', '200000','/AdminAssets/dist/img/nhagiakim.jpg', '180000','Sách hay' '2002-12-12','2002-12-13', 100)
+
 
 create table `user`
 (

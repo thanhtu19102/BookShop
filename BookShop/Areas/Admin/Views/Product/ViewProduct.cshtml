@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "ViewProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-wrapper">
+<h1 style="text-align:center;">CHI TIẾT SẢN PHẨM</h1>
+    @model BookShop.Areas.Admin.Models.Product   
+    <form action="/Admin/Product/UpdateProduct" method="post">
+        <label for="ID"></label> <input type="hidden" name="pd_ID" value="@Model.pd_ID" /><br>
+        <label for="hoten">TÊN SẢN PHẨM</label> <input type="text" name="title" value="@Model.title" /><br>
+        <label for="tentaikhoan">HÌNH ẢNH</label> <img style="height:100px;margin-left: auto;margin-right: auto; width: 100px;" src="/AdminAssets/dist/img/@Model.thumbnail" /><br>
+        <label for="matkhau">SỐ LƯỢNG</label> <input type="text" name="quantity" value="@Model.quantity" /><br>
+        <label for="diachi">GIÁ</label> <input type="text" name="price" value="@Model.price" /><br>
+        <label for="Name">Tên Danh Mục</label>
+        <select name="cat_name">
+            <option selected>Chọn Danh Mục</option>
+            <option>SÁCH CÔNG NGHỆ</option>
+            <option>SÁCH TÂM LÝ</option>
+            <option>SÁCH NGOẠI NGỮ</option>
+            <option>SÁCH KỸ NĂNG</option>
+            <option>SÁCH ĐẦU TƯ</option>
+            <option>SÁCH VĂN HỌC</option>
+            <option>SÁCH KINH TẾ</option>
+        </select><br>
+        <label for="sđt">MÔ TẢ</label><textarea name="des" value="@Model.des">@Model.des</textarea><br>
+        <input type="submit" name="submit" value="Cập nhật" />
+    </form>
+</div>

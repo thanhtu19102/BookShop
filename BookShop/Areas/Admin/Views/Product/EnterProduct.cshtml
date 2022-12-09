@@ -1,0 +1,29 @@
+﻿@model IEnumerable<BookShop.Areas.Admin.Models.Category>
+@{
+    ViewData["Title"] = "EnterProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <h1 style="text-align:center">TRANG THÊM SẢN PHẨM</h1>
+    
+    <form action="/Admin/Product/AddProduct" method="post">
+        <label for="Name">Tên Danh Mục</label> 
+        <select name="cat_name">
+            <option selected>Chọn Danh Mục</option>
+           <option>SÁCH CÔNG NGHỆ</option>
+           <option>SÁCH TÂM LÝ</option>
+           <option>SÁCH NGOẠI NGỮ</option>
+           <option>SÁCH KỸ NĂNG</option>
+           <option>SÁCH ĐẦU TƯ</option>
+        </select><br>
+        <label for="Product_Name">Tên Sản Phẩm</label> <input type="text" name="title"/><br>
+        <label for="Thumbnail">Hình Ảnh</label> <input type="file" name="thumbnail"/><br>
+        <label for="Description">Mô Tả</label> <textarea name="des"></textarea><br>
+        <label for="Quantity">Số Lượng</label> <input type="text" name="quantity"/><br>
+        <label for="Price">Giá</label> <input type="text" name="price"/><br>
+        <input type="submit" name="submit" value="Thêm" />
+    </form>
+</div>
+
+

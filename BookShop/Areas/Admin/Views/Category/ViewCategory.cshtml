@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "ViewCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model BookShop.Areas.Admin.Models.Category
+<div class="content-wrapper"
+    <h1 style="text-transform:uppercase">Chỉnh sửa thông tin danh mục</h1>
+    <form action="/Admin/Category/UpdateCategory" method="post">
+        <label for="Cat_ID"></label> <input type="hidden" name="cat_ID" value="@Model.cat_ID" /><br>
+        <label for="Name">TÊN DANH MỤC</label> <input type="text" name="name" value="@Model.name" /><br>
+        <input type="submit" name="submit" value="Cập nhật" />
+    </form>
+</div>
+

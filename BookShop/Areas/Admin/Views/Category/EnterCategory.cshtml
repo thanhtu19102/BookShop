@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "EnterCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<style>
+#etcat{
+    padding:10px
+}
+</style>
+<div class="content-wrapper" id="etcat">
+<h1 style="text-align:center">THÊM DANH MỤC MỚI</h1>
+<form action="/Admin/Category/AddCategory" method="post">
+    <label for="Cat_ID"></label> <input type="hidden" name="cat_ID"/><br>
+    <label for="Name">Tên Danh Mục</label> <input style="margin-left:30px" type="text" name="name"/><br>
+    <input style="margin-top:30px;" class="btn btn-primary" type="submit" name="submit" value="Thêm" />
+</form>
+</div>

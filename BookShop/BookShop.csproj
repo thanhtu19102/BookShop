@@ -5,7 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\AdminAssets\dist\img\nhagiakim.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\AdminAssets\dist\img\nhagiakim.jpg" />
   </ItemGroup>
 
   <ItemGroup>

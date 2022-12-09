@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<BookShop.Areas.Admin.Models.Category>
+@using BookShop.Areas.Admin.Models
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -20,14 +21,14 @@
            <td>@item.name</td>
            <td>
             <button class="btn btn-success"><a style="color:white" href="Category/ViewCategory?Id=@item.cat_ID">Sửa</a></button>
-            <button class="btn btn-danger"><a style="color:white" href="Category/DeleteCategory?Id=@item.name">Xóa</a></button>
+            <button class="btn btn-danger"><a style="color:white" href="Category/DeleteCategory?Id=@item.cat_ID">Xóa</a></button>
             </td>
        </tr>
        
    }
     </table><br>
     <div>
-        <button class="btn btn-primary" style="float:right"><a style="color:white; margin: 5px 5px" href="Category/AddCategory">Thêm Danh Mục</a></button>
+        <button class="btn btn-primary" style="float:right"><a style="color:white;" href="Category/EnterCategory">Thêm Danh Mục</a></button>
     </div>
 </div>
 
