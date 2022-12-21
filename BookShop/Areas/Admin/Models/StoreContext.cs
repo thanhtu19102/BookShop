@@ -42,6 +42,64 @@ namespace BookShop.Areas.Admin.Models
 
             }
         }
+
+        public int CheckLoginAdmin(string usname, string pass)
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                int i = 0;
+                conn.Open();
+                var str = "select * from USER where username=@username and password=@password and role='0' ";
+                MySqlCommand cmd = new MySqlCommand(str, conn);
+                cmd.Parameters.AddWithValue("username", usname);
+                cmd.Parameters.AddWithValue("password", pass);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        i++;
+                    }
+                }
+                return i;
+            }
+        }
+
+        //Check pass and username of user if it already exsits in database
+        public int CheckLoginUser(string username, string passw)
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                int i = 0;
+                conn.Open();
+                var str = "select * from USER where username=@username and password=@password and role='1' ";
+                MySqlCommand cmd = new MySqlCommand(str, conn);
+                cmd.Parameters.AddWithValue("username", username);
+                cmd.Parameters.AddWithValue("password", passw);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        i++;
+                    }
+                }
+                return i;
+            }
+        }
+
+        public int RegisterUser(User acc)
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                var str = "insert into user (username, password, email, role) values(@username, @password, @email, '1')";
+                MySqlCommand cmd = new MySqlCommand(str, conn);
+                cmd.Parameters.AddWithValue("username", acc.username);
+                cmd.Parameters.AddWithValue("password", acc.password);
+                cmd.Parameters.AddWithValue("email", acc.email);
+
+                return (cmd.ExecuteNonQuery());
+            }
+        }
         public List<User> GetUsers()
         {
             List<User> list = new List<User>();
@@ -407,6 +465,28 @@ namespace BookShop.Areas.Admin.Models
                 return (cmd.ExecuteNonQuery());
 
             }
+        }
+
+        public int CheckRegisterError(string us, string mail)
+        {
+            int i = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                var str = "select * from USER where username=@username or email = @email";
+                MySqlCommand cmd = new MySqlCommand(str, conn);
+
+                cmd.Parameters.AddWithValue("username", us);
+                cmd.Parameters.AddWithValue("email", mail);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        i++;
+                    }
+                }
+            }
+            return i;
         }
     }
 }

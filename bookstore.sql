@@ -25,7 +25,7 @@ create table product
 )
 INSERT INTO `product` (`cat_name`, `title`, `price`, `thumbnail`, `discount`, `des`, `created_at`, `updated_at`, `quantity`) VALUES
 ('SÁCH CÔNG NGHỆ', 'C++ For Beginers', '200000','/AdminAssets/dist/img/c++.jpg', '180000','Sách dành cho người mới học lập trình', '2002-12-12','2002-12-13', 100),
-('SÁCH ĐẦU TƯ', 'Nhà Giả Kim', '200000','/AdminAssets/dist/img/nhagiakim.jpg', '180000','Sách hay' '2002-12-12','2002-12-13', 100)
+('SÁCH ĐẦU TƯ', 'Nhà Giả Kim', '200000','/AdminAssets/dist/img/nhagiakim.jpg', '180000','Sách hay', '2002-12-12','2002-12-13', 100)
 
 
 create table `user`
@@ -63,10 +63,14 @@ create table order_detail
 	pd_ID int,
 	od_id int,
 	quantity int,
-	price int,
+	total int,
 	FOREIGN KEY fk_oddt_pd (pd_ID) REFERENCES product(pd_ID),
 	FOREIGN KEY fk_oddt_od (od_ID) REFERENCES `order`(od_ID)
 )
+
+insert order_detail (pd_ID, od_id, quantity) VALUES (1, 2, 2)
+insert order_detail (pd_ID, od_id, quantity) VALUES (2, 1, 3)
+insert order_detail (pd_ID, od_id, quantity) VALUES (1, 1, 5)
 
 
 
