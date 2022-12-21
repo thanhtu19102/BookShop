@@ -1,9 +1,9 @@
 
 
-INSERT INTO `order` (od_ID, user_ID, fullname, email, phone, address, order_date, status) VALUES (1, 1, 'Nguyễn Thanh Tú', 'thanhtu101102@gmail.com', '0358461911', 'Quận 12', '10/9/2021', 'Đã thanh toán');
-INSERT INTO `order` VALUES(2, 1, 'Nguyễn Thanh Tú', 'thanhtu101102@gmail.com', '0358461911', 'Quận 12', '10/12/2021', 'Chưa thanh toán');
-INSERT INTO `order` VALUES(3, 2, 'Lê Vinh', 'levinh@gmail.com', '0345678911', 'Thủ Đức', '18/9/2022', 'Đã thanh toán');
-INSERT INTO `order` VALUES(4, 2, 'Lê Vinh', 'levinh@gmail.com', '0345678911', 'Thủ Đức', '20/9/2022', 'Chưa thanh toán');
+INSERT INTO `order` (od_ID, user_ID, fullname, email, phone, address, order_date, status) VALUES (1, 1, 'Nguyễn Thanh Tú', 'thanhtu101102@gmail.com', '0358461911', 'Quận 12', '2021-09-10', 'Đã thanh toán');
+INSERT INTO `order` VALUES(2, 1, 'Nguyễn Thanh Tú', 'thanhtu101102@gmail.com', '0358461911', 'Quận 12', '2021-10-12', 'Chưa thanh toán');
+INSERT INTO `order` VALUES(3, 2, 'Lê Vinh', 'levinh@gmail.com', '0345678911', 'Thủ Đức', '2022-08-09', 'Đã thanh toán');
+INSERT INTO `order` VALUES(4, 2, 'Lê Vinh', 'levinh@gmail.com', '0345678911', 'Thủ Đức', '2022-08-13', 'Chưa thanh toán');
 
 -- đổi tên price => total
 ALTER TABLE order_detail
@@ -11,3 +11,5 @@ DROP COLUMN price
 
 ALTER TABLE order_detail
 ADD COLUMN total int
+
+
