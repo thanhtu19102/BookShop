@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BookShop.Areas.Admin.Models.Product>
+@{
+    ViewData["Title"] = "TRANG QUẢN LÝ SẢN PHẨM";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section id="popular-books" class="bookshelf">
+	<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+
+			<div class="section-header align-center">
+				<div class="title">
+					<span>Some quality items</span>
+				</div>
+				<h2 class="section-title">Book shop</h2>
+			</div>
+
+			<ul class="tabs">
+			  <li data-tab-target="#all-genre" class="active tab">All Genre</li>
+			  @foreach (var item in Model){
+			  <li data-tab-target="#@item.cat_name" class="tab">@item.cat_name</li>
+			  }
+			</ul>
+
+			<div class="tab-content">
+
+			  <div id="all-genre" data-tab-content class="active">
+				  <div class="row">
+						@foreach (var item in Model){
+							<div class="col-md-3">
+							  <figure class="product-style">
+										<img src="/AdminAssets/dist/img/@item.thumbnail" alt="Books" class="product-item">
+								<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+								<figcaption>
+									<h3>@item.title</h3>
+									<div class="item-price">@item.price</div>
+								</figcaption>
+							</figure>
+							</div>
+						}
+				 </div>
+			  </div>
+			 @* @foreach (var item in Model){
+			  <div id="@item.cat_name" data-tab-content>
+				  <div class="row">
+					  <div class="col-md-3">
+						  <figure class="product-style">
+							<img src="images/tab-item2.jpg" alt="Books" class="product-item">
+							<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+							<figcaption>
+								@foreach (var item2 in Model.cat_name{
+								<h3>Peaceful Enlightment</h3>
+								<p>Marmik Lama</p>
+								<div class="item-price">$ 40.00</div>
+							</figcaption>
+						</figure>
+					</div>
+
+					  
+					</div>
+					
+
+				 </div>
+								}*@
+			  </div>
+
+
+			</div>
+
+		</div><!--inner-tabs-->
+
+		</div>
+	</div>
+</section>

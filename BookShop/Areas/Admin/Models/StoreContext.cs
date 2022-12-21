@@ -100,6 +100,29 @@ namespace BookShop.Areas.Admin.Models
                 return (cmd.ExecuteNonQuery());
             }
         }
+
+        public int CheckRegisterError(string us, string mail)
+        {
+            int i = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                var str = "select * from USER where username=@username or email = @email";
+                MySqlCommand cmd = new MySqlCommand(str, conn);
+
+                cmd.Parameters.AddWithValue("username", us);
+                cmd.Parameters.AddWithValue("email", mail);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        i++;
+                    }
+                }
+            }
+            return i;
+        }
+
         public List<User> GetUsers()
         {
             List<User> list = new List<User>();
@@ -467,26 +490,6 @@ namespace BookShop.Areas.Admin.Models
             }
         }
 
-        public int CheckRegisterError(string us, string mail)
-        {
-            int i = 0;
-            using (MySqlConnection conn = GetConnection())
-            {
-                conn.Open();
-                var str = "select * from USER where username=@username or email = @email";
-                MySqlCommand cmd = new MySqlCommand(str, conn);
-
-                cmd.Parameters.AddWithValue("username", us);
-                cmd.Parameters.AddWithValue("email", mail);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        i++;
-                    }
-                }
-            }
-            return i;
-        }
+        
     }
 }
