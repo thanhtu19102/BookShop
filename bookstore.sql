@@ -24,7 +24,7 @@ create table product
 	FOREIGN KEY fk_pd_cat (cat_name) REFERENCES category(name)
 )
 INSERT INTO `product` (`cat_name`, `title`, `price`, `thumbnail`, `discount`, `des`, `created_at`, `updated_at`, `quantity`) VALUES
-('SÁCH CÔNG NGHỆ', 'C++ For Beginers', '200000','/AdminAssets/dist/img/c++.jpg', '180000','Sách dành cho người mới học lập trình', '2002-12-12','2002-12-13', 100)
+('SÁCH CÔNG NGHỆ', 'C++ For Beginers', '200000','/AdminAssets/dist/img/c++.jpg', '180000','Sách dành cho người mới học lập trình', '2002-12-12','2002-12-13', 100),
 ('SÁCH ĐẦU TƯ', 'Nhà Giả Kim', '200000','/AdminAssets/dist/img/nhagiakim.jpg', '180000','Sách hay' '2002-12-12','2002-12-13', 100)
 
 

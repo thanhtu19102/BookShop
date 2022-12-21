@@ -76,6 +76,40 @@ namespace BookShop.Areas.Admin.Models
             }
             return list;
         }
+        public List<Order> GetOrders()
+        {
+            List<Order> list = new List<Order>();
+
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                string str = "select * from `order`";
+                MySqlCommand cmd = new MySqlCommand(str, conn);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new Order()
+                        {
+                            od_ID = reader["od_ID"].ToString(),
+                            user_ID = reader["user_ID"].ToString(),
+                            fullname = reader["fullname"].ToString(),
+                            email = reader["email"].ToString(),
+                            phone = reader["phone"].ToString(),
+                            address = reader["address"].ToString(),
+                            order_Date = reader["order_date"].ToString(),
+                            status = reader["status"].ToString()
+                        });
+                    }
+                    reader.Close();
+                }
+
+                conn.Close();
+
+            }
+            return list;
+        }
         public int UpdateUser(User us)
         {
             using (MySqlConnection conn = GetConnection())
@@ -118,6 +152,39 @@ namespace BookShop.Areas.Admin.Models
                 }
             }
             return (us);
+        }
+       
+        public List<Order_detail> ViewOrder(string Id)
+        {
+            List<Order_detail> list = new List<Order_detail>();
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                string str = "SELECT *, (SELECT sum(order_detail.quantity * product.price) FROM order_detail, product WHERE order_detail.pd_ID = product.pd_ID AND order_detail.od_id = @oid) as s FROM order_detail, product WHERE order_detail.pd_ID = product.pd_ID AND order_detail.od_id = @oid";
+                MySqlCommand cmd = new MySqlCommand(str, conn);
+                cmd.Parameters.AddWithValue("oid", Id);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new Order_detail()
+                        {
+                            dt_ID = reader["dt_ID"].ToString(),
+                            od_ID = reader["od_ID"].ToString(),
+                            pd_ID = reader["pd_ID"].ToString(),
+                            quantity = Convert.ToInt32(reader["quantity"]),
+                            price = Convert.ToInt32(reader["price"]),
+                            total = Convert.ToInt32(reader["price"]) * Convert.ToInt32(reader["quantity"]),
+                            sub_total = Convert.ToInt32(reader["s"]),
+                            pd_title = reader["title"].ToString()
+                        });
+                    }
+                    reader.Close();
+                }
+
+                conn.Close();
+            }
+            return list;
         }
         public int DeleteUser(string id)
         {
