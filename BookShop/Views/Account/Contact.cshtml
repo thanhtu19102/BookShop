@@ -1,0 +1,112 @@
+﻿@{
+	ViewData["Title"] = "Contact";
+	Layout = "~/Views/Shared/_UserPageLayout.cshtml";
+}
+
+
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="page-title">Contact us</h1>
+				<div class="breadcrumbs">
+					<span class="item"><a asp-controller="Home">Home /</a></span>
+					<span class="item">Contact us</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="contact-information padding-large mt-3">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 p-0 mb-3">
+
+				<h2>Get in Touch</h2>
+
+				<div class="contact-detail d-flex flex-wrap mt-4">
+					<div class="detail mr-6 mb-4">
+						<p>Nếu có bất kỳ thắc mắc gì về sản phẩm, cũng như là chất lượng dịch vụ. Đừng ngại gửi feedback về cho chúng tôi vào khung bên kia hoặc liên hệ số hotline: </p>
+						<ul class="list-unstyled list-icon">
+							<li><i class="icon icon-phone"></i>+1650-243-0000</li>
+							<li><i class="icon icon-envelope-o"></i><a href="mailto:info@yourcompany.com">info@yourcompany.com</a></li>
+							<li><i class="icon icon-location2"></i>Linh Trung, DĨ An Bình Dương</li>
+						</ul>
+					</div><!--detail-->
+					<div class="detail mb-4">
+						<h3>Social Links</h3>
+						<div class="social-links flex-container">
+							<a href="#" class="icon icon-facebook"></a>
+							<a href="#" class="icon icon-twitter"></a>
+							<a href="#" class="icon icon-pinterest-p"></a>
+							<a href="#" class="icon icon-youtube"></a>
+							<a href="#" class="icon icon-linkedin"></a>
+						</div><!--social-links-->
+					</div><!--detail-->
+
+				</div><!--contact-detail-->
+			</div><!--col-md-6-->
+
+			<div class="col-md-6 p-0">
+
+				<div class="contact-information">
+					<h2>Send A Message</h2>
+					<form action="https://formspree.io/f/xzbqpeop"
+						  method="POST">
+						<label>
+							Your email:
+							<input type="email" name="email">
+						</label>
+						<label>
+							Your message:
+							<textarea name="message"></textarea>
+						</label>
+						<!-- your other form fields go here -->
+						<button type="submit">Send</button>
+					</form>
+
+				</div><!--contact-information-->
+
+
+
+				<script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+				<script>
+					/* paste this line in verbatim */
+					window.formbutton = window.formbutton || function () { (formbutton.q = formbutton.q || []).push(arguments) };
+					/* customize formbutton below*/
+					formbutton("create", {
+						action: "https://formspree.io/f/xzbqpeop",
+						title: "How can we help?",
+						fields: [
+							{
+								type: "email",
+								label: "Email:",
+								name: "email",
+								required: true,
+								placeholder: "your@email.com"
+							},
+							{
+								type: "textarea",
+								label: "Message:",
+								name: "message",
+								placeholder: "What's on your mind?",
+							},
+							{ type: "submit" }
+						],
+						styles: {
+							title: {
+								backgroundColor: "gray"
+							},
+							button: {
+								backgroundColor: "gray"
+							}
+						}
+					});
+				</script>
+
+			</div><!--col-md-6-->
+
+		</div>
+	</div>
+</section>

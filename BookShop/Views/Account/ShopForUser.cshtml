@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BookShop.Areas.Admin.Models.Product>
 @{
     ViewData["Title"] = "TRANG QUẢN LÝ SẢN PHẨM";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_UserPageLayout.cshtml";
 }
 <section id="popular-books" class="bookshelf">
 	<div class="container">
@@ -29,7 +29,7 @@
 										<img src="/AdminAssets/dist/img/@item.thumbnail" alt="Books" class="product-item">
 								
 								<figcaption>
-									<h3><a asp-controller="Account" asp-action="CheckNotLogin">@item.title</a></h3>
+											<h3><a href="/Product/Details?Id=@item.pd_ID">@item.title</a></h3>
 									<div class="item-price">@item.price</div>
 									<button type="button" data-product-tile="add-to-cart">Add to Cart</button>
 								</figcaption>

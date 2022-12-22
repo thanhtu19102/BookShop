@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Trang Đăng nhập";
+    Layout = "~/Views/Shared/_LoginLayOut.cshtml";
+}
+@{
+    <p>@ViewData["ThongBao"]</p>
+    <p>
+        <a asp-area="" asp-controller="Account" asp-action="LoginUser">Đi tới đăng nhập</a>/  <a asp-area="" asp-controller="Home" asp-action="Index">Trở về trang chủ</a>
+
+    </p>
+}
