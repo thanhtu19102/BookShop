@@ -9,18 +9,15 @@
 		<div class="col-md-12">
 
 			<div class="section-header align-center">
-				<div class="title">
-					<span>Some quality items</span>
-				</div>
 				<h2 class="section-title">Book shop</h2>
 			</div>
 
-			<ul class="tabs">
+			@*<ul class="tabs">
 			  <li data-tab-target="#all-genre" class="active tab">All Genre</li>
 			  @foreach (var item in Model){
 			  <li data-tab-target="#@item.cat_name" class="tab">@item.cat_name</li>
 			  }
-			</ul>
+			</ul>*@
 
 			<div class="tab-content">
 
@@ -30,10 +27,11 @@
 							<div class="col-md-3">
 							  <figure class="product-style">
 										<img src="/AdminAssets/dist/img/@item.thumbnail" alt="Books" class="product-item">
-								<button type="button" class="add-to-cart" data-product-tile="add-to-cart">Add to Cart</button>
+								
 								<figcaption>
-									<h3>@item.title</h3>
+									<h3><a href="Product/Details?Id=@item.pd_ID">@item.title</a></h3>
 									<div class="item-price">@item.price</div>
+									<button type="button" data-product-tile="add-to-cart">Add to Cart</button>
 								</figcaption>
 							</figure>
 							</div>
